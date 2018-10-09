@@ -1,0 +1,22 @@
+html,
+body {
+  width: 100%;
+  height: 100%; }
+
+body {
+  background-color: white;
+  margin: 0; }
+
+.card {
+  -webkit-box-shadow: 3px 3px 32px -2px rgba(128, 125, 128, 0.93);
+  -moz-box-shadow: 3px 3px 32px -2px rgba(128, 125, 128, 0.93);
+  box-shadow: 3px 3px 32px -2px rgba(128, 125, 128, 0.93); }
+
+.card::-webkit-scrollbar {
+  display: none; }
+
+.cardMain {
+  border-radius: inherit;
+  background-color: transparent;
+  padding-left: 10px;
+  padding-right: 15px; }
