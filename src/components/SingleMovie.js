@@ -1,7 +1,8 @@
 import React from 'react'
-import { Col } from 'react-bootstrap'
+import { Col, ButtonToolbar, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
-const SingleMovie = ({movie}) => {
+const SingleMovie = ({movie, genres}) => {
 
   let SingleMovieStyle = {
     height: "100vh",
@@ -10,6 +11,15 @@ const SingleMovie = ({movie}) => {
     backgroundSize: "cover",
     backgroundPosition: "center center"
   }
+
+
+  if (!genres && movie) {
+    return (
+      <div></div>
+    )
+  }
+
+
 
   return (
     <div className="singleMovie">
@@ -24,6 +34,15 @@ const SingleMovie = ({movie}) => {
         </Col>
         <Col className="movieTitle" sm={6} md={6}>
           <h1>{movie.title}</h1>
+          <ButtonToolbar>
+            {genres.map((genre) => (
+              <Button className="genre-button" key={genre.id}>
+                <Link to={`/browse/genre/${genre.id}`}>{genre.name}</Link>
+              </Button>
+            ))}
+
+
+        </ButtonToolbar>
           <p>{movie.overview}</p>
         </Col>
       </div>

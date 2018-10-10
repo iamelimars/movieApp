@@ -7,6 +7,7 @@ class MovieContainer extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchData(`https://api.themoviedb.org/3/movie/${id}?api_key=dfd4beb735b2271820aa9fe51b6fe1cb&language=en-US`)
+    
   }
 
   render() {
@@ -26,7 +27,7 @@ class MovieContainer extends Component {
 
     return(
       <div>
-        <SingleMovie movie={this.props.movie}/>        
+        <SingleMovie genres={this.props.movie.genres} movie={this.props.movie}/>
       </div>
     )
   }

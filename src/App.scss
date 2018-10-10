@@ -87,3 +87,16 @@ body {
 .movieInfoHero {
   margin-top: -380px;
 }
+.btn-toolbar {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  .genre-button {
+    border-radius: 20px;
+    border-color: transparent;
+    background-color: #353839;
+    color: white;
+    a {
+      color: white;
+    }
+  }
+}
