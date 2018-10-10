@@ -4,20 +4,23 @@ import HomeContainer from './HomeContainer';
 import TVShowsContainer from './TVShowsContainer';
 import MoviesContainer from './MoviesContainer';
 import MovieContainer from './MovieContainer';
+import TopNavBar from '../components/common/TopNavBar'
 
 
 const RootContainer = () => {
     return (
       <Router>
+        <div>
+        <TopNavBar />
         <Switch>
           <Redirect from="/" to="/browse" exact/>
           <Route path="/browse" component={HomeContainer} exact/>
           <Route path="/browse/shows" component={TVShowsContainer} exact/>
           <Route path="/browse/movies" component={MoviesContainer} exact/>
           <Route path="/browse/movies/:path" component={MoviesContainer} exact/>
-
           <Route path="/movie/:id" component={MovieContainer} />
         </Switch>
+      </div>
       </Router>
 
     )

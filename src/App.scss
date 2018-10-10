@@ -8,14 +8,34 @@ body {
 body {
   background-color: white;
   margin: 0;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
+
 }
 
-// div {
-//   display: unset;
-// }
+.navbar {
+  margin-top: 30px;
+  color: white;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: white;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color: pink;
+}
+
+.navbar-default .navbar-brand {
+  color: pink;
+}
+
+.navbar-default .navbar-brand:hover {
+  color: white;
+}
+
+.navbar-default {
+  background-color: transparent;
+  border-color: transparent;
+}
 
 .card {
   -webkit-box-shadow: 3px 3px 32px -2px rgba(128,125,128,0.93);
@@ -36,4 +56,34 @@ body {
   // text-align: left;
   padding-left: 10px;
   padding-right: 15px;
+}
+
+.singleMovie {
+  background-color: #000;
+  color: white;
+}
+.singleMovieHero {
+  width: 100%;
+  height: 100%;
+  margin-top: -100px;
+  text-align: center;
+  color: white;
+  background: -moz-radial-gradient(center, ellipse cover, rgba(63,76,107,0.2) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(63,76,107,0.2) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, rgba(63,76,107,0.2) 0%,rgba(0,0,0,1) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#173f4c6b', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3f4c6b+0,000000+88&0+0,1+91 */
+  background: -moz-linear-gradient(top, rgba(63,76,107,0.3) 0%, rgba(0,0,0,0.97) 88%, rgba(0,0,0,1) 91%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(63,76,107,0.3) 0%,rgba(0,0,0,0.97) 88%,rgba(0,0,0,1) 91%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(63,76,107,0.3) 0%,rgba(0,0,0,0.97) 88%,rgba(0,0,0,1) 91%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#003f4c6b', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+
+  .movieTitle {
+    top: 45%;
+  }
+}
+
+.movieInfoHero {
+  margin-top: -380px;
 }
