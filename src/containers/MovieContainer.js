@@ -7,7 +7,7 @@ class MovieContainer extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchData(`https://api.themoviedb.org/3/movie/${id}?api_key=dfd4beb735b2271820aa9fe51b6fe1cb&language=en-US`)
-    this.props.fetchMovieInfo(`${id}`)
+    this.props.fetchMovieData(`${id}`)
   }
 
   render() {
@@ -37,7 +37,11 @@ const mapStateToProps = (state) => {
   return {
     movie: state.movie,
     hasErrors: state.movieHasErrors,
-    isLoading: state.movieIsLoading
+    isLoading: state.movieIsLoading,
+    movieTrailers: state.movieTrailers,
+    similarMovies: state.similarMovies,
+    releaseDates: state.releaseDates,
+    movieCredits: state.movieCredits
   }
 }
 
