@@ -24,3 +24,39 @@ export const movie = (state = [], action) => {
       return state;
   }
 }
+
+export const movieTrailers = (state = [], action) => {
+  switch (action.type) {
+    case 'MOVIE_TRAILERS_HAVE_LOADED':
+      return action.movieTrailers
+    default:
+      return state;
+  }
+}
+
+export const similarMovies = (state = [], action) => {
+  switch (action.type) {
+    case 'SIMILAR_MOVIES_HAVE_LOADED':
+      return action.similarMovies
+    default:
+      return state;
+  }
+}
+
+export const releaseDates = (state = [], action) => {
+  switch (action.type) {
+    case 'RELEASE_DATES_HAVE_LOADED':
+      return action.releaseDates
+    default:
+      return state;
+  }
+}
+
+export const movieCredits = (state = [], action) => {
+  switch (action.type) {
+    case 'MOVIE_CREDITS_HAVE_LOADED':
+      return action.movieCredits
+    default:
+      return state;
+  }
+}

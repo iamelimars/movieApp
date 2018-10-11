@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchMovie } from '../actions/movieActions'
+import { fetchMovie, fetchMovieInfo } from '../actions/movieActions'
 import SingleMovie from '../components/SingleMovie'
 
 class MovieContainer extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchData(`https://api.themoviedb.org/3/movie/${id}?api_key=dfd4beb735b2271820aa9fe51b6fe1cb&language=en-US`)
-    
+    this.props.fetchMovieInfo(`${id}`)
   }
 
   render() {
@@ -43,7 +43,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchData: (url) => dispatch(fetchMovie(url))
+    fetchData: (url) => dispatch(fetchMovie(url)),
+    fetchMovieData: (id) => dispatch(fetchMovieInfo(id))
   }
 }
 

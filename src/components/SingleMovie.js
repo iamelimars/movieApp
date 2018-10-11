@@ -40,10 +40,9 @@ const SingleMovie = ({movie, genres}) => {
                 <Link to={`/browse/genre/${genre.id}`}>{genre.name}</Link>
               </Button>
             ))}
-
-
         </ButtonToolbar>
           <p>{movie.overview}</p>
+          <h4><i className="fas fa-star"></i> <strong>{movie.vote_average * 10}%</strong> <small>User Rating</small>  </h4>
         </Col>
       </div>
 
