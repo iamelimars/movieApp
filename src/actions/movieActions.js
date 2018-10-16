@@ -53,19 +53,19 @@ export function fetchMovieInfo(id) {
   return (dispatch) => {
     return axios.all([
       axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=dfd4beb735b2271820aa9fe51b6fe1cb&language=en-US`),
-      axios.get(`https://api.themoviedb.org/3/movie/383498/similar?api_key=dfd4beb735b2271820aa9fe51b6fe1cb&language=en-US&page=1`),
-      axios.get(`https://api.themoviedb.org/3/movie/383498/release_dates?api_key=dfd4beb735b2271820aa9fe51b6fe1cb`),
-      axios.get(`https://api.themoviedb.org/3/movie/383498/credits?api_key=dfd4beb735b2271820aa9fe51b6fe1cb`)
+      axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=dfd4beb735b2271820aa9fe51b6fe1cb&language=en-US&page=1`),
+      axios.get(`https://api.themoviedb.org/3/movie/${id}/release_dates?api_key=dfd4beb735b2271820aa9fe51b6fe1cb`),
+      axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=dfd4beb735b2271820aa9fe51b6fe1cb`)
     ])
     .then(axios.spread((trailerRes, similarRes, releaseRes, creditsRes) => {
-        dispatch(movieTrailersHaveLoaded(trailerRes))
-        dispatch(similarMoviesHaveLoaded(similarRes))
-        dispatch(releaseDatesHaveLoaded(releaseRes))
-        dispatch(movieCreditsHaveLoaded(creditsRes))
-        console.log(trailerRes.data)
-        console.log(similarRes.data)
-        console.log(releaseRes.data)
-        console.log(creditsRes.data)
+        dispatch(movieTrailersHaveLoaded(trailerRes.data))
+        dispatch(similarMoviesHaveLoaded(similarRes.data))
+        dispatch(releaseDatesHaveLoaded(releaseRes.data))
+        dispatch(movieCreditsHaveLoaded(creditsRes.data))
+        // console.log(trailerRes.data)
+        // console.log(similarRes.data)
+        // console.log(releaseRes.data)
+        // console.log(creditsRes.data)
     }))
   }
 }

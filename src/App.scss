@@ -2,7 +2,7 @@
 html,
 body {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
@@ -35,6 +35,10 @@ body {
 .navbar-default {
   background-color: transparent;
   border-color: transparent;
+}
+
+.btn:focus, input:focus {
+    outline:none;
 }
 
 .card {
@@ -81,11 +85,47 @@ body {
 
   .movieTitle {
     top: 45%;
+
   }
 }
 
+.movieTitle {
+  h4 {
+    margin-bottom: 20px;
+  }
+  p {
+    margin-bottom: 20px;
+  }
+}
+#ytplayer {
+  width: 100% !important;
+  height: 90vh !important;
+
+}
+
+.modal-content {
+  background-color: transparent;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  border-color: transparent;
+}
+iframe {
+  border-radius: 10px;
+}
+
+.poster-button {
+  background-color: transparent;
+  border-color: transparent;
+}
+.poster-button:hover {
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+}
 .movieInfoHero {
   margin-top: -380px;
+  margin-bottom: 20px;
+
 }
 .btn-toolbar {
   margin-top: 20px;
@@ -94,9 +134,52 @@ body {
     border-radius: 20px;
     border-color: transparent;
     background-color: #353839;
+    margin-bottom: 15px;
     color: white;
     a {
       color: white;
+    }
+  }
+}
+
+.trailer-button {
+  border-radius: 20px;
+  background-color: rgb(86, 75, 214);
+  border-color: rgb(86, 75, 214);
+
+}
+
+.trailer-button:hover {
+  border-radius: 20px;
+  background-color: rgb(86, 75, 214);
+  border-color: rgb(86, 75, 214);
+}
+
+.movie-info-section {
+  background-color: #000;
+  .profile-pic {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+  }
+  .small-profile-pic {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+
+
+  }
+  .thumbnail-row {
+
+  }
+  .thumbnail {
+    background-color: transparent;
+    border-color: transparent;
+    .caption {
+      color: white;
+      p {
+        color: gray;
+      }
     }
   }
 }

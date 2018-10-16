@@ -1,7 +1,7 @@
 html,
 body {
   width: 100%;
-  height: 100%; }
+  min-height: 100%; }
 
 body {
   background-color: white;
@@ -26,6 +26,9 @@ body {
 .navbar-default {
   background-color: transparent;
   border-color: transparent; }
+
+.btn:focus, input:focus {
+  outline: none; }
 
 .card {
   -webkit-box-shadow: 3px 3px 32px -2px rgba(128, 125, 128, 0.93);
@@ -71,8 +74,37 @@ body {
   .singleMovieHero .movieTitle {
     top: 45%; }
 
+.movieTitle h4 {
+  margin-bottom: 20px; }
+
+.movieTitle p {
+  margin-bottom: 20px; }
+
+#ytplayer {
+  width: 100% !important;
+  height: 90vh !important; }
+
+.modal-content {
+  background-color: transparent;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  border-color: transparent; }
+
+iframe {
+  border-radius: 10px; }
+
+.poster-button {
+  background-color: transparent;
+  border-color: transparent; }
+
+.poster-button:hover {
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer; }
+
 .movieInfoHero {
-  margin-top: -380px; }
+  margin-top: -380px;
+  margin-bottom: 20px; }
 
 .btn-toolbar {
   margin-top: 20px;
@@ -81,6 +113,35 @@ body {
     border-radius: 20px;
     border-color: transparent;
     background-color: #353839;
+    margin-bottom: 15px;
     color: white; }
     .btn-toolbar .genre-button a {
       color: white; }
+
+.trailer-button {
+  border-radius: 20px;
+  background-color: #564bd6;
+  border-color: #564bd6; }
+
+.trailer-button:hover {
+  border-radius: 20px;
+  background-color: #564bd6;
+  border-color: #564bd6; }
+
+.movie-info-section {
+  background-color: #000; }
+  .movie-info-section .profile-pic {
+    width: 100px;
+    height: auto;
+    border-radius: 10px; }
+  .movie-info-section .small-profile-pic {
+    width: 100px;
+    height: auto;
+    border-radius: 10px; }
+  .movie-info-section .thumbnail {
+    background-color: transparent;
+    border-color: transparent; }
+    .movie-info-section .thumbnail .caption {
+      color: white; }
+      .movie-info-section .thumbnail .caption p {
+        color: gray; }
