@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/homeActions';
-import { Link } from 'react-router-dom';
+import HomePage from '../components/HomePage';
 
 
 class HomeContainer extends Component {
@@ -25,16 +25,7 @@ class HomeContainer extends Component {
 
     return(
       <div>
-        <h2>Home</h2>
-        <ul>
-          {this.props.posts.map((post) => (
-            <li key={post.id}>
-              <Link to={`/movie/${post.id}`}>
-                {post.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <HomePage headerMovie={this.props.posts[0]} movies={this.props.posts} />
       </div>
     )
   }

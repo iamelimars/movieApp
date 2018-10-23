@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, ButtonToolbar, Button, Modal, OverlayTrigger } from 'react-bootstrap'
+import { Col, ButtonToolbar, Button, Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const SingleMovie = ({movie, genres, movieTrailers, similarMovies, releaseDates, cast, crew, show, handleShow, handleClose}) => {

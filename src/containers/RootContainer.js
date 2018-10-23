@@ -5,6 +5,7 @@ import TVShowsContainer from './TVShowsContainer';
 import MoviesContainer from './MoviesContainer';
 import MovieContainer from './MovieContainer';
 import TopNavBar from '../components/common/TopNavBar'
+import Footer from '../components/common/Footer'
 
 
 const RootContainer = () => {
@@ -20,6 +21,7 @@ const RootContainer = () => {
           <Route path="/browse/movies/:path" component={MoviesContainer} exact/>
           <Route path="/movie/:id" component={MovieContainer} />
         </Switch>
+        <Footer />
       </div>
       </Router>
 
