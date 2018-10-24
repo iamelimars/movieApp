@@ -25,7 +25,7 @@ class HomeContainer extends Component {
 
     return(
       <div>
-        <HomePage headerMovie={this.props.posts[0]} movies={this.props.posts} />
+        <HomePage headerMovie={this.props.posts[0]} movies={this.props.posts} shows={this.props.shows} />
       </div>
     )
   }
@@ -35,6 +35,7 @@ class HomeContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     posts: state.posts,
+    shows: state.shows,
     hasErrors: state.postsHaveErrors,
     isLoading: state.postsAreLoading
   }

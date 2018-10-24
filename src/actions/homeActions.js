@@ -21,19 +21,29 @@ export function postsHaveLoaded(posts){
   }
 }
 
+export function showsHaveLoaded(shows){
+  return {
+    type: 'SHOWS_HAVE_LOADED',
+    shows: shows
+  }
+}
+
 export function fetchPosts(url) {
   return (dispatch) => {
     dispatch(postsAreLoading(true))
-    return axios.get(url)
-                .then((response) => {
-                  dispatch(postsAreLoading(false))
-                  console.log(response.data.results)
-                  dispatch(postsHaveLoaded(response.data.results))
 
-                })
-                .catch((error) => {
-                  dispatch(postsAreLoading(false))
-                  dispatch(postsHaveErrors(true))
-                })
+    return axios.all([
+      axios.get(url),
+      axios.get('https://api.themoviedb.org/3/tv/popular?api_key=dfd4beb735b2271820aa9fe51b6fe1cb&language=en-US&page=1')
+    ])
+    .then(axios.spread((movieRes, showRes)=> {
+      dispatch(postsAreLoading(false))
+      dispatch(postsHaveLoaded(movieRes.data.results))
+      dispatch(showsHaveLoaded(showRes.data.results))
+    }))
+    .catch((error) => {
+      dispatch(postsHaveErrors(true))
+      dispatch(postsAreLoading(false))
+    })
   }
 }

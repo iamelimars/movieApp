@@ -24,3 +24,12 @@ export const posts = (state = [], action) => {
       return state;
   }
 }
+
+export const shows = (state=[], action) => {
+  switch (action.type) {
+    case 'SHOWS_HAVE_LOADED':
+      return action.shows
+    default:
+      return state;
+  }
+}

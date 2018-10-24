@@ -62,10 +62,6 @@ export function fetchMovieInfo(id) {
         dispatch(similarMoviesHaveLoaded(similarRes.data))
         dispatch(releaseDatesHaveLoaded(releaseRes.data))
         dispatch(movieCreditsHaveLoaded(creditsRes.data))
-        // console.log(trailerRes.data)
-        // console.log(similarRes.data)
-        // console.log(releaseRes.data)
-        // console.log(creditsRes.data)
     }))
   }
 }

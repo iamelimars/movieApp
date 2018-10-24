@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import { postsHaveErrors, postsAreLoading, posts } from './homeReducer'
+import { postsHaveErrors, postsAreLoading, posts, shows } from './homeReducer'
 import { movieHasErrors, movieIsLoading, movie, movieTrailers, similarMovies, releaseDates, movieCredits } from './movieReducer'
 import { moviesHaveErrors, currentMoviesAreLoading, popularMoviesAreLoading, topRatedMoviesAreLoading, upcomingMoviesAreLoading, currentMovies, popularMovies, topRatedMovies, upcomingMovies } from './moviesReducer'
 
@@ -8,6 +8,7 @@ export default combineReducers({
   postsHaveErrors,
   postsAreLoading,
   posts,
+  shows,
   movieHasErrors,
   movieIsLoading,
   movie,
