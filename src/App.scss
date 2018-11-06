@@ -106,13 +106,39 @@ body {
   height: 90vh !important;
 
 }
-
 .modal-content {
-  background-color: transparent;
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  border-color: transparent;
+  .trailer-modal {
+    background-color: transparent !important;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    border-color: transparent;
+  }
 }
+  .modal-content {
+    color: white;
+    background-color: transparent;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    border-color: transparent;
+  }
+
+.search-modal {
+    .modal-content {
+      color: black;
+      background-color: rgba(255, 255, 255, 0.8);
+      box-shadow: none;
+      -webkit-box-shadow: none;
+      border-color: transparent;
+    }
+}
+
+
+
+  body.modal-open .supreme-container{
+
+}
+
+
 iframe {
   border-radius: 10px;
 }

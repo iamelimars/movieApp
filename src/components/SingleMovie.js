@@ -11,7 +11,7 @@ const SingleMovie = ({movie, genres, movieTrailers, similarMovies, releaseDates,
     backgroundSize: "cover",
     backgroundPosition: "center center"
   }
-  console.log(show);
+  // console.log(show);
 
 
 
@@ -41,7 +41,7 @@ if (!cast ) {
             <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt=""/>
           </a>
 
-          <Modal bsSize="large" show={show} onHide={handleClose}>
+          <Modal className="trailer-modal" bsSize="large" show={show} onHide={handleClose}>
             <iframe id="ytplayer" type="text/html"
               src={`https://www.youtube.com/embed/${movieTrailers[0].key}?autoplay=1`}
               frameBorder="0" allowFullscreen></iframe>
