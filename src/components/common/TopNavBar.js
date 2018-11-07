@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import $ from 'jquery';
+import MovieRow from './MovieRow'
+import SearchModal from './SearchModal'
 
 
 
@@ -18,6 +20,9 @@ class TopNavBar extends Component {
       show: false
     };
   }
+
+  
+
 
   performSearch(searchTerm) {
     const urlString = "https://api.themoviedb.org/3/search/movie?api_key=dfd4beb735b2271820aa9fe51b6fe1cb&query=" + searchTerm;
@@ -49,6 +54,7 @@ class TopNavBar extends Component {
 
   handleClose() {
     this.setState({ show: false });
+    console.log('closing');
   }
 
   handleShow() {
@@ -57,6 +63,7 @@ class TopNavBar extends Component {
 
   render() {
     return (
+      <div>
       <Navbar collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
@@ -87,17 +94,18 @@ class TopNavBar extends Component {
           </Nav>
           <Nav pullRight>
             <NavItem onClick={this.handleShow}>
-              Search
+              <i className="fas fa-search fa-1.5x"/>
             </NavItem>
-            <Modal className="search-modal" bsSize="large" show={this.state.show} onHide={this.handleClose}>
-              <div className="container">
-                <input className="searchBar" onChange={this.searchChangeHandler.bind(this)} placeholder="Enter Search Term"/>
-                {this.state.rows}
-              </div>
-            </Modal>
+
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+      <Modal className="search-modal" bsSize="large" show={this.state.show} onHide={this.handleClose}>
+        <div>
+          <SearchModal handleClose={this.handleClose} />
+        </div>
+      </Modal>
+    </div>
 
     )
   }
