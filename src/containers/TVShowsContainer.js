@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { getAllShows } from '../actions/showsActions'
+import ShowsBrowseSection from '../components/common/ShowsBrowseSection'
 
 
 class TVShowsContainer extends Component {
@@ -32,7 +33,10 @@ class TVShowsContainer extends Component {
 
       return(
         <div className="container">
-          <h2>TV Shows</h2>
+          <ShowsBrowseSection shows={this.props.popularShows} title="Popular Shows" />
+          <ShowsBrowseSection shows={this.props.topRatedShows} title="Top Rated Shows" />
+          <ShowsBrowseSection shows={this.props.onTheAirShows} title="Shows On The Air" />
+          <ShowsBrowseSection shows={this.props.airingTodayShows} title="Shows Airing Today" />
         </div>
     )
   }
