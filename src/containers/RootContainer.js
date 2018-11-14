@@ -4,6 +4,7 @@ import HomeContainer from './HomeContainer';
 import TVShowsContainer from './TVShowsContainer';
 import MoviesContainer from './MoviesContainer';
 import MovieContainer from './MovieContainer';
+import MoviePathContainer from './MoviePathContainer'
 import TopNavBar from '../components/common/TopNavBar'
 import Footer from '../components/common/Footer'
 
@@ -11,16 +12,19 @@ import Footer from '../components/common/Footer'
 const RootContainer = () => {
     return (
       <Router>
-        <div>
+        <div className="page-wrapper">
           <TopNavBar />
-          <Switch>
-            <Redirect from="/" to="/browse" exact/>
-            <Route path="/browse" component={HomeContainer} exact/>
-            <Route path="/browse/shows" component={TVShowsContainer} exact/>
-            <Route path="/browse/movies" component={MoviesContainer} exact/>
-            <Route path="/browse/movies/:path" component={MoviesContainer} exact/>
-            <Route path="/movie/:id" component={MovieContainer} />
-          </Switch>
+          <div className="page-content">
+            <Switch >
+              <Redirect from="/" to="/browse" exact/>
+              <Route path="/browse" component={HomeContainer} exact/>
+              <Route path="/browse/shows" component={TVShowsContainer} exact/>
+              <Route path="/shows/:path" component={TVShowsContainer} exact/>
+              <Route path="/browse/movies" component={MoviesContainer} exact/>
+              <Route path="/movies/:path(popular|toprated|nowplaying|comingsoon)" component={MoviePathContainer} exact/>
+              <Route path="/movie/:id" component={MovieContainer} />
+            </Switch>
+          </div>
           <Footer />
         </div>
       </Router>

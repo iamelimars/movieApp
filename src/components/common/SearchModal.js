@@ -9,6 +9,8 @@ class SearchModal extends Component {
 
     this.performSearch()
 
+    this.handleClose = this.props.handleClose
+
     this.state = {
       rows: []
     }
@@ -25,7 +27,7 @@ class SearchModal extends Component {
         var movieRows = [];
         results.forEach((movie) => {
           movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path;
-          const movieRow = <MovieRow handleClose={this.props.handleClose} key={movie.id} movie={movie} />
+          const movieRow = <MovieRow closeModal={this.handleClose} key={movie.id} movie={movie} />
           movieRows.push(movieRow);
         })
 

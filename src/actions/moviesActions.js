@@ -127,3 +127,22 @@ export function getUpcomingMovies(url) {
                 })
   }
 }
+
+export function getAllMovies(){
+  return (dispatch) => {
+    dispatch(currentMoviesAreLoading(true))
+    return axios.all([
+      axios.get('https://api.themoviedb.org/3/movie/popular?api_key=dfd4beb735b2271820aa9fe51b6fe1cb&language=en-US&page=1'),
+      axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=dfd4beb735b2271820aa9fe51b6fe1cb&language=en-US&page=1'),
+      axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=dfd4beb735b2271820aa9fe51b6fe1cb&language=en-US&page=1'),
+      axios.get('https://api.themoviedb.org/3/movie/upcoming?api_key=dfd4beb735b2271820aa9fe51b6fe1cb&language=en-US&page=1')
+    ])
+    .then(axios.spread((popularRes, topRatedRes, nowPlayingRes, upcomingRes) => {
+      dispatch(currentMoviesAreLoading(false))
+      dispatch(popularMoviesHaveLoaded(popularRes.data.results))
+      dispatch(topRatedMoviesHaveLoaded(topRatedRes.data.results))
+      dispatch(currentMoviesHaveLoaded(nowPlayingRes.data.results))
+      dispatch(upcomingMoviesHaveLoaded(upcomingRes.data.results))
+    }))
+  }
+}

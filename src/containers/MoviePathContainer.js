@@ -1,14 +1,18 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { getCurrentMovies, getPopularMovies, getTopRatedMovies, getUpcomingMovies, getAllMovies } from '../actions/moviesActions'
-import MovieBrowseSection from '../components/common/MovieBrowseSection'
+import MoviePathPage from '../components/MoviePathPage'
 
-class MoviesContainer extends Component {
+
+
+
+class MoviePathContainer extends Component {
   constructor(props, context) {
     super(props, context)
 
     this.state = {
-      loaded: false
+      movies: [],
+      page: ''
     }
   }
 
@@ -18,27 +22,38 @@ class MoviesContainer extends Component {
       console.log(this.props.topRatedMovies);
       console.log(this.props.currentMovies);
       console.log(this.props.upcomingMovies);
-      this.setState({loaded: true})
     })
   }
-  render() {
-    if (this.state.loaded === false) {
-      return (
-        <div>Loading</div>
-      )
-    }
-    return(
 
-      <div className="container">
-        <MovieBrowseSection movies={this.props.popularMovies} title="Popular Movies" />
-        <MovieBrowseSection movies={this.props.topRatedMovies} title="Top Rated" />
-        <MovieBrowseSection movies={this.props.currentMovies} title="Now Playing" />
-        <MovieBrowseSection movies={this.props.upcomingMovies} title="Coming Soon" />
-      </div>
-    )
+
+  render() {
+
+    let param = this.props.match.params.path
+
+    switch (param) {
+      case 'popular':
+        return (
+          <MoviePathPage movies={this.props.popularMovies} title="Most Popular" />
+        )
+      case 'toprated':
+        return (
+          <MoviePathPage movies={this.props.topRatedMovies} title="Top Rated" />
+        )
+      case 'nowplaying':
+        return (
+          <MoviePathPage movies={this.props.currentMovies} title="Now Playing" />
+        )
+      case 'comingsoon':
+        return (
+          <MoviePathPage movies={this.props.upcomingMovies} title="Coming Soon" />
+        )
+      default:
+        return (
+          <h1>Loading</h1>
+        )
+    }
   }
 }
-
 
 const mapStateToProps = (state) => {
   return {
@@ -64,4 +79,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoviesContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePathContainer);

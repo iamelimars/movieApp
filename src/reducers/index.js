@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 import { postsHaveErrors, postsAreLoading, posts, shows } from './homeReducer'
 import { movieHasErrors, movieIsLoading, movie, movieTrailers, similarMovies, releaseDates, movieCredits } from './movieReducer'
 import { moviesHaveErrors, currentMoviesAreLoading, popularMoviesAreLoading, topRatedMoviesAreLoading, upcomingMoviesAreLoading, currentMovies, popularMovies, topRatedMovies, upcomingMovies } from './moviesReducer'
+import { searchModalIsOpen } from './navbarReducer'
 
 
 export default combineReducers({
@@ -24,5 +25,6 @@ export default combineReducers({
   movieTrailers,
   similarMovies,
   releaseDates,
-  movieCredits
+  movieCredits,
+  searchModalIsOpen
 })

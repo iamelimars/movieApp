@@ -1,13 +1,13 @@
 import React, {Component}  from 'react'
 import { Link } from 'react-router-dom'
 import $ from 'jquery';
+import TopNavBar from './TopNavBar'
 
 
 class MovieRow extends Component {
 
    rowClicked() {
-    console.log(this.props.movie.id)
-
+    this.props.closeModal()
     this.setState({ show: false })
   }
   render() {

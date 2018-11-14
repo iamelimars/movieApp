@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Modal } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Navbar, Nav, NavItem, NavDropdown, Modal, Col } from 'react-bootstrap'
+import { Link, NavLink } from 'react-router-dom'
 import $ from 'jquery';
-import MovieRow from './MovieRow'
-import SearchModal from './SearchModal'
+import { connect } from 'react-redux';
+import { openSearchModal, closeSearchModal } from '../../actions/navbarActions';
+
 
 
 
@@ -13,15 +14,13 @@ class TopNavBar extends Component {
 
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
-
+    this.handleClose = this.handleClose
     this.performSearch()
 
     this.state = {
       show: false
     };
   }
-
-  
 
 
   performSearch(searchTerm) {
@@ -34,7 +33,20 @@ class TopNavBar extends Component {
         var movieRows = [];
         results.forEach((movie) => {
           movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path;
-          const movieRow = <MovieRow key={movie.id} movie={movie} />
+          // const movieRow = <MovieRow closeModal={this.handleClose} key={movie.id} movie={movie} />
+          const movieRow = <div key={movie.id} className="movie-search-row" onClick={this.handleClose} >
+                            <Link to={`/movie/${movie.id}`}>
+                                <div className="row">
+                                  <Col sm={2} xs={4} className="search-image">
+                                    <img src={movie.poster_src} width="80" alt="poster"/>
+                                  </Col>
+                                  <Col sm={10} xs={8} className="search-info">
+                                    <h4>{movie.title}</h4>
+                                    <p className="">{movie.overview.substr(0, 300)}...</p>
+                                  </Col>
+                                </div>
+                            </Link>
+                          </div>
           movieRows.push(movieRow);
         })
 
@@ -53,11 +65,15 @@ class TopNavBar extends Component {
   }
 
   handleClose() {
+    this.props.closeModal()
     this.setState({ show: false });
     console.log('closing');
+
   }
 
   handleShow() {
+    this.props.openModal()
+
     this.setState({ show: true });
   }
 
@@ -74,23 +90,21 @@ class TopNavBar extends Component {
         <Navbar.Collapse>
           <Nav>
             <NavDropdown title="Movies" id="basic-nav-dropdown">
-              <MenuItem  href="/browse/movies">Browse</MenuItem>
-              <MenuItem  href="/browse/movies">Most Popular</MenuItem>
-              <MenuItem  href="/browse/movies">Top Rated</MenuItem>
-              <MenuItem  href="/browse/movies">Now Playing</MenuItem>
-              <MenuItem  href="/browse/movies">Coming Soon</MenuItem>
+              <li><NavLink to="/browse/movies">Browse</NavLink></li>
+              <li><NavLink to="/movies/popular">Most Popular</NavLink></li>
+              <li><NavLink to="/movies/toprated">Top Rated</NavLink></li>
+              <li><NavLink to="/movies/nowplaying">Now Playing</NavLink></li>
+              <li><NavLink to="/movies/comingsoon">Coming Soon</NavLink></li>
             </NavDropdown>
             <NavDropdown title="TV Shows" id="basic-nav-dropdown">
-              <MenuItem  href="/browse/shows">Browse</MenuItem>
-              <MenuItem  href="/browse/shows">Most Popular</MenuItem>
-              <MenuItem  href="/browse/shows">Top Rated</MenuItem>
-              <MenuItem  href="/browse/shows">Coming Soon</MenuItem>
-              <MenuItem  href="/browse/shows">On The Air</MenuItem>
-              <MenuItem  href="/browse/shows">Airing Today</MenuItem>
+              <li><NavLink to="/browse/shows">Browse</NavLink></li>
+              <li><NavLink to="/browse/shows">Most Popular</NavLink></li>
+              <li><NavLink to="/browse/shows">Top Rated</NavLink></li>
+              <li><NavLink to="/browse/shows">Coming Soon</NavLink></li>
+              <li><NavLink to="/browse/shows">On The Air</NavLink></li>
+              <li><NavLink to="/browse/shows">Airing Today</NavLink></li>
             </NavDropdown>
-            <NavItem href="/browse/shows">
-              Popular People
-            </NavItem>
+            <li><NavLink to="/browse/shows">People</NavLink></li>
           </Nav>
           <Nav pullRight>
             <NavItem onClick={this.handleShow}>
@@ -102,7 +116,10 @@ class TopNavBar extends Component {
       </Navbar>
       <Modal className="search-modal" bsSize="large" show={this.state.show} onHide={this.handleClose}>
         <div>
-          <SearchModal handleClose={this.handleClose} />
+          <h3 className="search-header">Search Movies & Shows</h3>
+          <input className="searchBar" onChange={this.searchChangeHandler.bind(this)} placeholder="Enter Search Term" autoFocus/>
+          {this.state.rows}
+          {/* <SearchModal handleClose={this.handleClose} /> */}
         </div>
       </Modal>
     </div>
@@ -111,4 +128,20 @@ class TopNavBar extends Component {
   }
 }
 
-export default TopNavBar
+
+const mapStateToProps = (state) => {
+  return {
+    isOpen: state.isOpen
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    openModal: () => dispatch(openSearchModal()),
+    closeModal: () => dispatch(closeSearchModal())
+  }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopNavBar)

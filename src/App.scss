@@ -12,9 +12,10 @@ body {
 body {
   background-color: white;
   margin: 0;
+}
 
-
-
+.page-wrapper {
+  min-height: 100vh;
 }
 
 .navbar {
@@ -45,6 +46,64 @@ body {
   background-color: transparent;
   border-color: transparent;
 }
+.navbar-nav>li>.dropdown-menu {
+  border-color: transparent;
+  background-color: rgba(42,45,52,0.9);
+  border-radius: 6px;
+}
+.navbar-default .navbar-nav>.open>a {
+  border-color: transparent;
+  background-color: rgba(42,45,52,0.9);
+  border-radius: 6px;
+  color: pink;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+  border-color: transparent;
+  background-color: rgba(42,45,52,0.9);
+  border-radius: 6px;
+  color: pink;
+}
+.dropdown-menu>li>a {
+  color: white;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+  color: white;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus, .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+  color: pink;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+      margin-top: 0px;
+  }
+  .navbar-default {
+      border-color: transparent;
+      background-color: #2a2d34;
+  }
+  .navbar-default .navbar-collapse {
+      border-color: transparent;
+      background-color: #2a2d34;
+  }
+
+  .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+     background-color: transparent;
+  }
+ }
+
+
 
 .btn:focus, input:focus {
     outline:none;
@@ -189,19 +248,23 @@ body {
 
 
 .movie-search-row {
+  width: 100%;
   margin-bottom: 30px;
   padding: 20px;
   cursor: pointer;
   border-radius: 7px;
   transition: 0.3s;
   .search-image {
-    padding-left: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    float: left;
+    // padding-left: 20px;
+    // padding-top: 20px;
+    // padding-bottom: 20px;
   }
   .search-info {
-    margin: 10px;
-    padding: 20px;
+    float: right;
+    display:inline;
+    // margin: 10px;
+    // padding: 20px;
     color: white;
     font-weight: 100;
   }
@@ -286,6 +349,10 @@ iframe {
       }
     }
   }
+}
+
+.page-content {
+  min-height: calc(100vh - 380px);
 }
 
 
