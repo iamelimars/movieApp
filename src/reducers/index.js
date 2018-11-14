@@ -3,7 +3,7 @@ import { postsHaveErrors, postsAreLoading, posts, shows } from './homeReducer'
 import { movieHasErrors, movieIsLoading, movie, movieTrailers, similarMovies, releaseDates, movieCredits } from './movieReducer'
 import { moviesHaveErrors, currentMoviesAreLoading, popularMoviesAreLoading, topRatedMoviesAreLoading, upcomingMoviesAreLoading, currentMovies, popularMovies, topRatedMovies, upcomingMovies } from './moviesReducer'
 import { searchModalIsOpen } from './navbarReducer'
-
+import { showsHaveErrors, showsAreLoading, popularShows, topRatedShows, onTheAirShows, airingTodayShows } from './showsReducer'
 
 export default combineReducers({
   postsHaveErrors,
@@ -26,5 +26,11 @@ export default combineReducers({
   similarMovies,
   releaseDates,
   movieCredits,
-  searchModalIsOpen
+  searchModalIsOpen,
+  showsHaveErrors,
+  showsAreLoading,
+  popularShows,
+  topRatedShows,
+  onTheAirShows,
+  airingTodayShows
 })
